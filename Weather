@@ -1,0 +1,18 @@
+# Version 3: Read from Single-Line File
+with open("sheet_Single.txt", "w") as f:
+  f.write("2.5 3.0 1.5 4")
+with open("sheet_Single.txt", "r") as f:
+  a, b, c, time = map(float, f.readline().split())
+  time = int(time)
+  temp = Temperature_modeling(a, b, c, time)
+  print(f"The Temp at time {time} is {temp}")
+
+# Version 4: Read from Multi-Line File
+with open("sheet_Multiple.txt", "w") as f:
+  f.write("1 2 3 1\n2 3 1 2\n")
+print("The Temperatures from file:")
+for line in open("sheet_Multiple.txt"):
+  a, b, c, time = map(float, line.split())
+  time = int(time)
+  temp = Temperature_modeling(a, b, c, time)
+  print(f" Time {time} + Temp = {temp}")
